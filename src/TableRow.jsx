@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const TableRow = props => {
   const {
@@ -11,6 +12,11 @@ const TableRow = props => {
     checkInDate,
     checkOutDate
   } = props.data;
+
+  const returnDateDiff = () => {
+    return moment(checkOutDate).diff(moment(checkInDate), "days");
+  };
+
   return (
     <tr>
       <td>{id}</td>
@@ -21,7 +27,7 @@ const TableRow = props => {
       <td>{roomId}</td>
       <td>{checkInDate}</td>
       <td>{checkOutDate}</td>
-      <td>x</td>
+      <td>{returnDateDiff()}</td>
     </tr>
   );
 };
