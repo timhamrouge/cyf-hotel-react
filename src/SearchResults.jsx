@@ -1,9 +1,11 @@
 import React from "react";
 
 import TableHead from "./TableHead";
+import TableRow from "./TableRow";
 
-const SearchResults = () => {
+const SearchResults = props => {
   const tableHeaders = [
+    "ID",
     "Title",
     "First Name",
     "Surname",
@@ -15,22 +17,19 @@ const SearchResults = () => {
   ];
 
   return (
-    <table class="table">
+    <table className="table">
       <thead>
         <tr>
           {tableHeaders.map(header => {
-            return <TableHead name={header} />;
+            return <TableHead key={String(header)} name={header} />;
           })}
-
-          {/* <TableHead name="First Name" />
-                    <TableHead name="Surname" />
-                    <TableHead name="Email" />
-                    <TableHead name="Room ID" />
-                    <TableHead name="Check-In Date" />
-                    <TableHead name="Check-Out Date" />
-                    <TableHead name="Unused" /> */}
         </tr>
       </thead>
+      <tbody>
+        {props.results.map(result => {
+          return <TableRow key={result.id} data={result} />;
+        })}
+      </tbody>
     </table>
   );
 };
