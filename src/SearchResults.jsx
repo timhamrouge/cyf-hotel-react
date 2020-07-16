@@ -13,7 +13,7 @@ const SearchResults = props => {
     "Room ID",
     "Check-In Date",
     "Check-Out Date",
-    "Unused"
+    "Nights"
   ];
 
   return (
